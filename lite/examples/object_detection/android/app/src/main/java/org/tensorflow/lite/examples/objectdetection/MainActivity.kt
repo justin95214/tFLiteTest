@@ -15,12 +15,12 @@
  */
 
 package org.tensorflow.lite.examples.objectdetection
-
+import android.util.Log
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import org.tensorflow.lite.examples.objectdetection.databinding.ActivityMainBinding
-
+import org.opencv.android.OpenCVLoader
 /**
  * Main entry point into our app. This app follows the single-activity pattern, and all
  * functionality is implemented in the form of fragments.
@@ -33,6 +33,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
+
+        if (!OpenCVLoader.initDebug()) {
+            Log.e("OpenCV", "Unable to load OpenCV")
+        } else {
+            Log.d("OpenCV", "OpenCV loaded successfully")
+        }
     }
 
     override fun onBackPressed() {

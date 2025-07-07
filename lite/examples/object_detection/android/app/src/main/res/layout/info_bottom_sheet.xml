@@ -59,13 +59,24 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:textSize="@dimen/bottom_sheet_text_size" />
+
+            <TextView
+                android:id="@+id/inference_fps_val"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="100dp"
+                android:text="0 fps"
+                android:textColor="@color/bottom_sheet_text_color"
+                android:textSize="@dimen/bottom_sheet_text_size" />
+
             <TextView
                 android:id="@+id/inference_time_val"
-                android:text="0ms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="end"
                 android:layout_centerVertical="true"
+                android:width="100dp"
+                android:gravity="end"
+                android:text="0ms"
                 android:textColor="@color/bottom_sheet_text_color"
                 android:textSize="@dimen/bottom_sheet_text_size" />
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -262,11 +273,11 @@
                 android:id="@+id/spinner_model"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:entries="@array/models_spinner_titles"
                 android:minWidth="@dimen/bottom_sheet_spinner_model_min_width"
                 android:spinnerMode="dropdown"
-                android:theme="@style/BottomSheetSpinnerItemStyle"
-                android:layout_alignParentRight="true"
-                android:entries="@array/models_spinner_titles"/>
+                android:theme="@style/BottomSheetSpinnerItemStyle" />
 
         </RelativeLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>

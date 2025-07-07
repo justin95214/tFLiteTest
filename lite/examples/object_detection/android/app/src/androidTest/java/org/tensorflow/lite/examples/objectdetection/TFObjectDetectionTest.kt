@@ -63,7 +63,9 @@ class TFObjectDetectionTest {
                           results: MutableList<Detection>?,
                           inferenceTime: Long,
                           imageHeight: Int,
-                          imageWidth: Int
+                          imageWidth: Int,
+                          labels: List<String>
+
                         ) {
 
                             assertEquals(controlResults.size, results!!.size)
@@ -103,7 +105,8 @@ class TFObjectDetectionTest {
     fun detectedImageIsScaledWithinModelDimens() {
         val objectDetectorHelper =
             ObjectDetectorHelper(
-                context = InstrumentationRegistry.getInstrumentation().context,
+                //context = InstrumentationRegistry.getInstrumentation().context,
+                context = InstrumentationRegistry.getInstrumentation().targetContext,
                 objectDetectorListener =
                     object : ObjectDetectorHelper.DetectorListener {
                         override fun onError(error: String) {}
@@ -112,7 +115,8 @@ class TFObjectDetectionTest {
                           results: MutableList<Detection>?,
                           inferenceTime: Long,
                           imageHeight: Int,
-                          imageWidth: Int
+                          imageWidth: Int,
+                          labels: List<String>
                         ) {
                             assertNotNull(results)
                             for (result in results!!) {

@@ -299,12 +299,17 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
     override fun onResults(
       results: MutableList<Detection>?,
       inferenceTime: Long,
+      fps: Float,
       imageHeight: Int,
-      imageWidth: Int
+      imageWidth: Int,
+      labels: List<String>
     ) {
         activity?.runOnUiThread {
             fragmentCameraBinding.bottomSheetLayout.inferenceTimeVal.text =
                             String.format("%d ms", inferenceTime)
+
+            fragmentCameraBinding.bottomSheetLayout.inferenceFpsVal.text =
+                String.format("%.1f fps", fps)
 
             // Pass necessary information to OverlayView for drawing on the canvas
             fragmentCameraBinding.overlay.setResults(

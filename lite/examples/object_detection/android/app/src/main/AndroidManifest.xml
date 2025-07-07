@@ -13,12 +13,14 @@
     ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     ~ See the License for the specific language governing permissions and
     ~ limitations under the License.
+        ~ //package="org.tensorflow.lite.examples.objectdetection">
 -->
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
     xmlns:tools="http://schemas.android.com/tools"
     package="org.tensorflow.lite.examples.objectdetection">
+
 
     <!-- Enable instant app support -->
     <dist:module dist:instant="true" />
@@ -53,8 +55,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <!-- Declare notch support -->
+       <!-- Declare notch support -->
             <meta-data android:name="android.notch_support" android:value="true"/>
 
         </activity>
