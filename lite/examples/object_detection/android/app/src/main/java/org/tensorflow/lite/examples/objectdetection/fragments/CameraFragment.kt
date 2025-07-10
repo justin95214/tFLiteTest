@@ -36,6 +36,7 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import org.tensorflow.lite.examples.objectdetection.MainActivity
 import java.util.LinkedList
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -317,6 +318,18 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
                 imageHeight,
                 imageWidth
             )
+
+            // Sending data by Bluetooth
+            results?.forEach { detection ->
+                val category = detection.categories.firstOrNull()
+                val label = category?.label ?: "Unknown"
+                val confidence = category?.score ?: 0f
+
+                val msg = """{"label":"$label","confidence":${"%.2f".format(confidence)}}"""
+                (activity as? MainActivity)?.bluetoothServer?.sendMessage(msg)
+                Log.d("BT_SEND", "Sent: $msg")
+            }
+
 
             // Force a redraw
             fragmentCameraBinding.overlay.invalidate()
